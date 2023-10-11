@@ -89,3 +89,7 @@ Here's what the script does:
 - Backend: Your backend server is running on port 3000.
 
 Now, your Movie Assignment project is ready to use.
+
+## Access Swagger Documentation
+
+- Swagger documentation for the backend API is available at: http://localhost:3000/api
