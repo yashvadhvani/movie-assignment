@@ -1,4 +1,6 @@
 import { NestFactory } from '@nestjs/core';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import * as fs from 'fs';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -9,6 +11,17 @@ async function bootstrap() {
     credentials: true, // Enable credentials (cookies, headers, etc.)
     allowedHeaders: 'Authorization,Content-Type', // Allow specific headers
   });
+  const options = new DocumentBuilder()
+    .setTitle('Movie-Assignment')
+    .setDescription('CRUD Operation')
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+
+  fs.writeFileSync('./swagger-spec.json', JSON.stringify(document, null, 2));
+  SwaggerModule.setup('/api', app, document);
+
   await app.listen(3000);
 }
 bootstrap();
