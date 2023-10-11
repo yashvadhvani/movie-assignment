@@ -1,0 +1,16 @@
+{
+  "name": "movie-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "cd backend && npx prisma migrate dev --name init && cd ..",
+    "start": "concurrently \"cd backend && npm start\" \"cd frontend && npm run dev\"",
+    "init:start": "npm run init && npm start"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

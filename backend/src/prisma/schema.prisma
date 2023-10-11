@@ -1,0 +1,44 @@
+// schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Define your database connection URL using an environment variable
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the User model
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Movie     Movie[]
+}
+
+// Define the Cast object
+model Cast {
+  id      Int    @id @default(autoincrement())
+  name    String
+  role    String
+  Movie   Movie? @relation(fields: [movieId], references: [id])
+  movieId Int?
+}
+
+// Define the Movie model with a relation to the Cast model
+model Movie {
+  id          Int      @id @default(autoincrement())
+  name        String
+  rating      Float
+  cast        Cast[]
+  genre       String
+  releaseDate DateTime
+  createdBy   User?    @relation(fields: [createdById], references: [id])
+  createdById Int? // This field is used to establish a foreign key relationship with the User model
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
