@@ -6,13 +6,11 @@ import {
   HttpStatus,
   Get,
   Request,
-  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Public } from './decorators/public.decorator';
 import { LoginDto, RegisterDto } from './dto/auth.dto';
 import { ApiBody, ApiOperation } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -38,7 +36,6 @@ export class AuthController {
     return { message: 'User registered successfully' };
   }
 
-  @UseGuards(AuthGuard)
   @Get('user')
   @ApiOperation({ summary: 'Get User Object (Login Required)' })
   async getProfile(@Request() req) {

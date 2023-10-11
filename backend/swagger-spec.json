@@ -48,6 +48,7 @@
     "/auth/user": {
       "get": {
         "operationId": "AuthController_getProfile",
+        "summary": "Get User Object (Login Required)",
         "parameters": [],
         "responses": {
           "200": {
@@ -209,95 +210,11 @@
       },
       "CreateMovieDto": {
         "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "Lagan",
-            "description": "Name"
-          },
-          "rating": {
-            "type": "number",
-            "example": 4,
-            "description": "Rating"
-          },
-          "cast": {
-            "example": [
-              {
-                "name": "Abhishek",
-                "role": "Hero"
-              }
-            ],
-            "description": "Cast",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "genre": {
-            "type": "string",
-            "example": "Danger",
-            "description": "Genre"
-          },
-          "releaseDate": {
-            "format": "date-time",
-            "type": "string",
-            "example": "08/11/2023",
-            "description": "Release Date"
-          }
-        },
-        "required": [
-          "name",
-          "rating",
-          "cast",
-          "genre",
-          "releaseDate"
-        ]
+        "properties": {}
       },
       "UpdateMovieDto": {
         "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "Lagan",
-            "description": "Name"
-          },
-          "rating": {
-            "type": "number",
-            "example": 4,
-            "description": "Rating"
-          },
-          "cast": {
-            "example": [
-              {
-                "name": "Abhishek",
-                "role": "Hero"
-              }
-            ],
-            "description": "Cast",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "genre": {
-            "type": "string",
-            "example": "Danger",
-            "description": "Genre"
-          },
-          "releaseDate": {
-            "format": "date-time",
-            "type": "string",
-            "example": "08/11/2023",
-            "description": "Release Date"
-          }
-        },
-        "required": [
-          "name",
-          "rating",
-          "cast",
-          "genre",
-          "releaseDate"
-        ]
+        "properties": {}
       }
     }
   }
